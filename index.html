@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서가 세무회계 - 프리미엄 절세 파트너</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; }
+        body { background-color: #F8FAFC; color: #333; line-height: 1.6; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 28px; font-weight: 800; color: #0F172A; margin-bottom: 12px; }
+        .section-header p { font-size: 16px; color: #64748B; word-break: keep-all; }
+
+        header { padding: 16px 5%; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 20px; font-weight: 800; color: #0F172A; text-decoration: none;}
+        .logo span { color: #3B82F6; }
+        .header-btn { font-size: 14px; font-weight: 600; color: #fff; background-color: #0F172A; padding: 8px 16px; border-radius: 6px; text-decoration: none; }
+
+        .hero { padding: 120px 5% 100px; background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: #fff; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; animation: fadeInUp 0.8s ease-out; }
+        .hero-container { display: flex; align-items: center; justify-content: space-between; gap: 60px; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; }
+        .hero-text { flex: 1 1 500px; min-width: 300px; text-align: left; }
+        .hero-text h1 { font-size: 34px; font-weight: 900; margin-bottom: 24px; line-height: 1.35; word-break: keep-all; }
+        .hero-text h1 span { color: #60A5FA; }
+        .hero-text p { font-size: 16px; color: #94A3B8; margin-bottom: 35px; word-break: keep-all;}
+        .cta-btn { display: inline-flex; align-items: center; gap: 8px; background-color: #FBBF24; color: #111; font-size: 17px; font-weight: 700; padding: 16px 36px; border-radius: 50px; text-decoration: none; box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3); }
+        .hero-image { flex: 0 0 380px; max-width: 380px; min-width: 300px; border-radius: 30px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.12); }
+        .hero-image img { width: 100%; display: block; object-fit: cover; }
+
+        .features { display: flex; justify-content: center; gap: 24px; padding: 0 20px; margin-top: -50px; flex-wrap: wrap; z-index: 10; position: relative; }
+        .feature-card { background-color: #fff; width: 30%; min-width: 280px; padding: 30px 20px; border-radius: 20px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.06); animation: fadeInUp 1s ease-out 0.2s backwards; }
+        .icon-circle { width: 64px; height: 64px; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; font-size: 24px; margin-bottom: 20px; }
+        .icon-navy { background-color: #EFF6FF; color: #2563EB; }
+        .icon-coral { background-color: #FEF2F2; color: #EF4444; }
+        .icon-mint { background-color: #ECFDF5; color: #10B981; }
+        .feature-card h3 { font-size: 18px; font-weight: 700; color: #1E293B; margin-bottom: 10px; }
+        .feature-card p { font-size: 14px; color: #64748B; }
+
+        .ceo-profile { padding: 120px 5% 100px; background-color: #fff; position: relative; }
+        .profile-container { display: flex; align-items: center; justify-content: center; max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; flex-wrap: wrap; }
+        .ceo-text { flex: 1 1 500px; min-width: 300px; text-align: center; } 
+        .ceo-text h4 { font-size: 14px; color: #3B82F6; font-weight: 800; margin-bottom: 12px; letter-spacing: 1.5px; }
+        .ceo-text h2 { font-size: 34px; font-weight: 900; color: #0F172A; margin-bottom: 30px; line-height: 1.35; word-break: keep-all; }
+        .ceo-text p { font-size: 16px; color: #475569; line-height: 1.8; margin-bottom: 18px; word-break: keep-all; }
+        .ceo-text p strong { color: #0F172A; }
+        .ceo-signature { margin-top: 40px; font-size: 18px; font-weight: 700; color: #1E293B; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .ceo-signature span { font-weight: 400; font-size: 14px; color: #64748B; }
+
+        .contents-hub { padding: 100px 5%; background-color: #F8FAFC; }
+        .blog-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; max-width: 1000px; margin: 0 auto; padding: 0 10px;}
+        .blog-header h3 { font-size: 18px; font-weight: 700; color: #1E293B; display: flex; align-items: center; gap: 8px; }
+        .more-btn { font-size: 14px; color: #3B82F6; text-decoration: none; font-weight: 600; }
+        .blog-scroll { display: flex; gap: 20px; padding: 10px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; max-width: 1000px; margin: 0 auto; }
+        .blog-scroll::-webkit-scrollbar { display: none; }
+        .blog-card { min-width: 280px; width: 300px; background-color: #fff; border-radius: 20px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); scroll-snap-align: start; text-decoration: none; color: inherit; border: 1px solid #E2E8F0; transition: transform 0.2s; }
+        .blog-category { display: inline-block; padding: 4px 10px; background-color: #EFF6FF; color: #2563EB; font-size: 12px; font-weight: 700; border-radius: 6px; margin-bottom: 15px; }
+        .blog-card h4 { font-size: 18px; font-weight: 800; color: #1E293B; margin-bottom: 12px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .blog-card p { font-size: 14px; color: #64748B; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 20px;}
+        
+        .services-section { padding: 100px 5%; background-color: #fff; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
+        .service-card { background-color: #F8FAFC; padding: 40px 30px; border-radius: 20px; text-align: left; transition: all 0.3s ease; border: 1px solid transparent; }
+        .service-icon { font-size: 32px; color: #3B82F6; margin-bottom: 20px; background-color: #EFF6FF; width: 70px; height: 70px; display: inline-flex; justify-content: center; align-items: center; border-radius: 16px; }
+        .service-card h3 { font-size: 20px; font-weight: 800; color: #1E293B; margin-bottom: 12px; }
+        .service-card p { font-size: 14px; color: #64748B; line-height: 1.6; }
+
+        .process-section { padding: 100px 5%; background-color: #F8FAFC; text-align: center; }
+        .process-container { display: flex; justify-content: space-between; align-items: stretch; max-width: 1000px; margin: 0 auto; gap: 20px; flex-wrap: wrap; }
+        .process-step { flex: 1; min-width: 220px; background: #fff; border-radius: 20px; padding: 40px 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.04); position: relative; border: 1px solid #E2E8F0; }
+        .step-number { width: 50px; height: 50px; background-color: #3B82F6; color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 900; font-size: 20px; margin: 0 auto 20px; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3); }
+        .process-step h3 { font-size: 18px; font-weight: 800; color: #1E293B; margin-bottom: 12px; }
+        .process-step p { font-size: 14px; color: #64748B; word-break: keep-all; line-height: 1.6; }
+
+        .contact-section { padding: 100px 5%; background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: #fff; }
+        .contact-section .section-header h2 { color: #fff; }
+        .contact-section .section-header p { color: #94A3B8; }
+        .contact-container { display: flex; flex-wrap: wrap; gap: 40px; max-width: 1000px; margin: 0 auto; background-color: #fff; border-radius: 24px; padding: 40px; box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
+        .contact-form { flex: 1; min-width: 300px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 14px; font-weight: 700; color: #475569; margin-bottom: 8px; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px 16px; border: 1px solid #CBD5E1; border-radius: 10px; font-size: 15px; background-color: #F8FAFC; color: #000;}
+        .submit-btn { width: 100%; padding: 16px; background-color: #3B82F6; color: #fff; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; }
+        
+        .contact-info { flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center; background-color: #F8FAFC; padding: 40px; border-radius: 16px; }
+        .info-item { margin-bottom: 30px; }
+        .info-item h4 { font-size: 14px; color: #64748B; font-weight: 600; margin-bottom: 8px; }
+        .info-item p { font-size: 22px; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 10px;}
+        .kakao-btn { display: inline-flex; justify-content: center; align-items: center; gap: 10px; width: 100%; padding: 18px; background-color: #FEE500; color: #000; border-radius: 12px; text-decoration: none; font-size: 16px; font-weight: 800; margin-top: 10px; }
+
+        .location-section { padding: 100px 5%; background-color: #fff; }
+        .location-container { display: flex; max-width: 1000px; margin: 0 auto; gap: 0; flex-wrap: wrap; background: #F8FAFC; border-radius: 24px; overflow: hidden; border: 1px solid #E2E8F0; }
+        .map-area { flex: 1.5; min-width: 300px; min-height: 350px; background-color: #E2E8F0; position: relative; }
+        .map-area iframe { width: 100%; height: 100%; border: none; position: absolute; top: 0; left: 0; }
+        .location-info { flex: 1; min-width: 300px; padding: 40px; display: flex; flex-direction: column; justify-content: center; background-color: #fff; border-left: 1px solid #E2E8F0; }
+        .loc-item { margin-bottom: 24px; }
+        .loc-item:last-child { margin-bottom: 0; }
+        .loc-item h4 { font-size: 15px; font-weight: 800; color: #3B82F6; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .loc-item p { font-size: 16px; font-weight: 600; color: #1E293B; word-break: keep-all; line-height: 1.5; }
+        .loc-item span { font-size: 13px; color: #64748B; font-weight: 400; display: block; margin-top: 4px;}
+
+        .mobile-floating-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 999; }
+        .float-btn-group { display: flex; width: 100%; }
+        .float-btn { flex: 1; padding: 18px 0; text-align: center; font-size: 16px; font-weight: 800; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; }
+        .float-call { background-color: #fff; color: #0F172A; border-top: 1px solid #E2E8F0; }
+        .float-kakao { background-color: #FEE500; color: #000; border-top: 1px solid #FEE500;}
+
+        @media (max-width: 1024px) {
+            .hero-text { flex: 0 0 100%; text-align: center; }
+            .hero-image { flex: 0 0 100%; max-width: 300px; margin: 0 auto; }
+            .location-container { border: none; }
+            .location-info { border-left: none; border-top: 1px solid #E2E8F0; }
+        }
+        @media (max-width: 768px) {
+            body { padding-bottom: 60px; }
+            .mobile-floating-bar { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">서가 <span>세무회계</span></a>
+        <a href="#contact" class="header-btn">상담 문의</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>세무서의 시선으로 깐깐하게,<br>대표님에겐 <span>가장 다정하게</span></h1>
+                <p>세금 공무원 출신 최혜경 세무사가 복잡한 세금 문제를 명쾌하게 풀어드립니다.<br>대표님은 오직 사업에만 집중하세요.</p>
+                <a href="http://open.kakao.com/me/hyekeong" class="cta-btn"><i class="fa-solid fa-comment"></i> 카톡으로 3분 만에 무료 상담하기</a>
+            </div>
+            <div class="hero-image">
+                <img src="seoga_profile.png" alt="서가 세무회계 최혜경 대표 세무사">
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <div class="icon-circle icon-navy"><i class="fa-solid fa-building-columns"></i></div>
+            <h3>세금 공무원 출신</h3>
+            <p>국세청 실무 경험을 바탕으로<br>빈틈없는 전문성을 제공합니다.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-circle icon-coral"><i class="fa-solid fa-face-smile-wink"></i></div>
+            <h3>1:1 맞춤 소통</h3>
+            <p>어려운 전문 용어는 빼고<br>명쾌하고 친절하게 설명해 드립니다.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon-circle icon-mint"><i class="fa-solid fa-coins"></i></div>
+            <h3>업종별 맞춤 절세</h3>
+            <p>대표님의 사업 특성에 맞춰<br>새는 돈 없이 완벽하게 방어합니다.</p>
+        </div>
+    </section>
+
+    <section class="ceo-profile">
+        <div class="profile-container">
+            <div class="ceo-text">
+                <h4>ABOUT US</h4>
+                <h2>"어렵고 막막한 세금,<br>대표님의 가장 든든한<br>러닝메이트가 되겠습니다."</h2>
+                <p>안녕하세요. 서가 세무회계 대표 세무사 최혜경입니다.</p>
+                <p><strong>세금 공무원</strong>으로 일하며 수많은 사업자분들을 만났습니다. 누군가에겐 그저 복잡한 숫자일지 모르지만, 대표님들에겐 피와 땀이 섞인 소중한 자산이라는 것을 누구보다 잘 알고 있습니다.</p>
+                <p>세무서의 높은 문턱을 낮추고, <strong>진짜 내 편이 되어주는 전문가</strong>가 되고 싶어 서가 세무회계를 열었습니다. 복잡한 세금 고민은 저에게 맡겨두시고, 대표님은 오직 사업의 성장에만 집중하세요. 친절하고 명쾌한 설명으로 대표님의 지갑을 든든하게 지켜드리겠습니다.</p>
+                <div class="ceo-signature">
+                    최혜경 <span>대표 세무사</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contents-hub">
+        <div class="section-header">
+            <h2>서가 세무회계 인사이트</h2>
+            <p>세무사의 진심이 담긴 세무 칼럼과 에세이</p>
+        </div>
+        <div class="blog-header">
+            <h3><i class="fa-solid fa-pen-nib" style="color:#03C75A;"></i> 최혜경 세무사 블로그</h3>
+            <a href="https://m.blog.naver.com/hyekeong" target="_blank" class="more-btn">전체 글 보기 ></a>
+        </div>
+        <div class="blog-scroll">
+            <a href="https://m.blog.naver.com/hyekeong" target="_blank" class="blog-card">
+                <span class="blog-category">절세 칼럼</span>
+                <h4>세무서에서 일하며 느꼈던 진짜 절세의 의미</h4>
+                <p>단순히 세금을 줄이는 것을 넘어, 사업의 방향을 잡는 튼튼한 재무 관리의 중요성에 대하여 말씀드리고자 합니다...</p>
+            </a>
+            <a href="https://m.blog.naver.com/hyekeong" target="_blank" class="blog-card">
+                <span class="blog-category">세무 상식</span>
+                <h4>올해 바뀌는 세법, 우리 회사에는 어떤 영향이 있을까?</h4>
+                <p>바쁜 대표님들을 위해 이번 연도 핵심 세법 개정안을 아주 쉽게 요약해 보았습니다.</p>
+            </a>
+        </div>
+    </section>
+    <section class="services-section">
+        <div class="section-header">
+            <h2>서가 세무회계 맞춤 서비스</h2>
+            <p>세금 공무원 출신의 노하우로 대표님의 상황에 딱 맞는 솔루션을 제공합니다.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-calculator"></i></div>
+                <h3>기장 대리 및 세무 자문</h3>
+                <p>매월 복잡한 영수증과 장부 관리에 지치셨나요? 꼼꼼한 월별 장부 작성부터 인건비 신고, 4대보험 관리까지 대행해 드립니다.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                <h3>종합소득세·부가세 신고</h3>
+                <p>빠뜨리기 쉬운 각종 세액 공제와 감면 혜택을 국세청 실무 경험을 바탕으로 샅샅이 찾아내어 최대한의 절세를 이끌어냅니다.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                <h3>양도·상속·증여세 컨설팅</h3>
+                <p>잦은 세법 개정으로 복잡해진 재산제세 분야에서, 합법적이고 가장 안전한 최적의 자산 이전 플랜을 설계해 드립니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="section-header">
+            <h2>쉽고 체계적인 업무 프로세스</h2>
+            <p>복잡한 절차 없이, 대표님은 사업에만 집중하실 수 있도록 도와드립니다.</p>
+        </div>
+        <div class="process-container">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>무료 상담 접수</h3>
+                <p>카톡, 전화, 홈페이지 폼을 통해 편하게 세무 고민을 남겨주세요.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>1:1 맞춤 상담</h3>
+                <p>세무사가 직접 연락드려 현재 상황을 정확하게 파악하고 진단합니다.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>최적의 솔루션 제안</h3>
+                <p>놓치고 있던 공제 혜택과 가장 안전한 절세 플랜을 설계해 드립니다.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h3>계약 및 전담 관리</h3>
+                <p>계약 후 즉시 밀착 관리가 시작되며, 세금 스트레스에서 완전히 해방됩니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="section-header">
+            <h2>지금 바로 세금 고민을 해결하세요</h2>
+            <p>간단한 정보만 남겨주시면, 최혜경 대표 세무사가 직접 친절하게 답변해 드립니다.</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-form">
+                <form action="https://formsubmit.co/Hyekeong@naver.com" method="POST">
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <div class="form-group">
+                        <label>성함 또는 상호명</label>
+                        <input type="text" name="이름" placeholder="홍길동 / 서가컴퍼니" required>
+                    </div>
+                    <div class="form-group">
+                        <label>연락처</label>
+                        <input type="tel" name="연락처" placeholder="010-0000-0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label>관심 서비스</label>
+                        <select name="관심서비스">
+                            <option>기장 대리 상담</option>
+                            <option>신고 대리 (종소세/부가세)</option>
+                            <option>양도/상속/증여 상담</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>문의 내용 (선택)</label>
+                        <textarea name="문의내용" rows="3" placeholder="궁금하신 점을 간단히 적어주세요."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">이메일로 무료 상담 신청하기</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <div class="info-item"><h4>대표 전화</h4><p><i class="fa-solid fa-phone" style="color: #3B82F6;"></i> 010-4012-0152</p></div>
+                <div class="info-item"><h4>업무 시간</h4><p style="font-size: 16px; font-weight: 600; color: #475569;">평일 09:00 ~ 18:00</p></div>
+                <div class="info-item" style="margin-bottom: 0;">
+                    <h4>빠른 카톡 상담</h4>
+                    <a href="http://open.kakao.com/me/hyekeong" class="kakao-btn"><i class="fa-solid fa-comment"></i> 서가 세무회계 카톡 문의</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="location-section">
+        <div class="section-header">
+            <h2>오시는 길</h2>
+            <p>서가 세무회계는 언제나 대표님을 환영합니다. 편하게 방문해 주세요.</p>
+        </div>
+        <div class="location-container">
+            <div class="map-area">
+                <iframe src="https://maps.google.com/maps?q=경기도%20성남시%20분당구%20양현로%20192&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0;" allowfullscreen></iframe>
+            </div>
+            <div class="location-info">
+                <div class="loc-item">
+                    <h4><i class="fa-solid fa-location-dot"></i> 사무실 주소</h4>
+                    <p>경기도 성남시 분당구 양현로 192<br>104호</p>
+                    <span>(건물 내 주차장 무료 이용 가능)</span>
+                </div>
+                <div class="loc-item">
+                    <h4><i class="fa-solid fa-train-subway"></i> 대중교통 이용 시</h4>
+                    <p>야탑역(수인분당선) 인근</p>
+                </div>
+                <div class="loc-item">
+                    <h4><i class="fa-solid fa-clock"></i> 운영 시간</h4>
+                    <p>평일 09:00 ~ 18:00 (점심 12:00~13:00)</p>
+                    <span>주말 및 공휴일은 휴무입니다.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="mobile-floating-bar">
+        <div class="float-btn-group">
+            <a href="tel:010-4012-0152" class="float-btn float-call"><i class="fa-solid fa-phone"></i> 전화 상담</a>
+            <a href="http://open.kakao.com/me/hyekeong" class="float-btn float-kakao"><i class="fa-solid fa-comment"></i> 카톡 상담</a>
+        </div>
+    </div>
+
+</body>
+</html>
